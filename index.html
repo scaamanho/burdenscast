@@ -1,220 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>The Burden's Cast</title>
-		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Burden's Cast - Epic Dungeon Adventure</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Pirata+One&family=Uncial+Antiqua&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="app/burdens_cast.icon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/img/candle_64.png" alt="Candle" class="logo-icon">
+                <span class="logo-text">The Burden's Cast</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#characters" class="nav-link">Characters</a></li>
+                <li><a href="#instructions" class="nav-link">How to Play</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#play" class="nav-link">Play</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-particles"></div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/img/burdencast-initial.1.png" alt="The Burden's Cast" class="hero-main-image">
+            <div class="hero-image-glow"></div>
+            <div class="hero-play-button">
+                <a href="app/index.html" class="btn btn-primary btn-mega btn-floating">
+                    <span class="btn-icon">⚔️</span>
+                    <span class="btn-text">PLAY NOW!</span>
+                    <div class="btn-glow"></div>
+                    <div class="btn-pulse"></div>
+                </a>
+                <p class="play-button-features">🎯 Free • 🚀 No downloads • ⚡ Play instantly</p>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-main">The Burden's Cast</span>
+                <span class="title-subtitle">Epic Dungeon & Dice Adventure</span>
+            </h1>
+            <p class="hero-description">
+                Immerse yourself in a world of magic, mystery and tactical adventure. Form your group of heroes, 
+                explore dangerous dungeons and face the dark forces by rolling dice 
+                and making strategic decisions.
+            </p>
+            <div class="hero-buttons">
+                <a href="#instructions" class="btn btn-secondary btn-learn">
+                    <span>📚 Learn to Play</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Unique Heroes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Adventures</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Strategy</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-#canvas {
-	display: block;
-}
+    <!-- Characters Section -->
+    <section id="characters" class="characters">
+        <div class="container">
+            <h2 class="section-title">Choose Your Hero</h2>
+            <p class="section-subtitle">Each hero has unique abilities and different strategies</p>
+            
+            <div class="characters-grid">
+                <div class="character-card" data-character="warrior">
+                    <div class="character-image">
+                        <img src="assets/img/warrior_256.png" alt="Warrior">
+                        <div class="character-overlay">
+                            <h3>Warrior</h3>
+                            <p>Master of melee combat, protector of the weak</p>
+                            <div class="character-stats">
+                                <span>⚔️ Attack: 1</span>
+                                <span>🛡️ Defense: 2</span>
+                                <span>👟 Movement: 1</span>
+                                <span>🎯 Range: 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="character-card" data-character="archer">
+                    <div class="character-image">
+                        <img src="assets/img/archer_256.png" alt="Archer">
+                        <div class="character-overlay">
+                            <h3>Archer</h3>
+                            <p>Lethal precision at distance, silent hunter</p>
+                            <div class="character-stats">
+                                <span>⚔️ Attack: 1</span>
+                                <span>🛡️ Defense: 1</span>
+                                <span>👟 Movement: 1</span>
+                                <span>🎯 Range: 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="character-card" data-character="rogue">
+                    <div class="character-image">
+                        <img src="assets/img/rogue_256.png" alt="Rogue">
+                        <div class="character-overlay">
+                            <h3>Rogue</h3>
+                            <p>Master of stealth and tactics, expert in surprise attacks</p>
+                            <div class="character-stats">
+                                <span>⚔️ Attack: 1</span>
+                                <span>🛡️ Defense: 1</span>
+                                <span>👟 Movement: 2</span>
+                                <span>🎯 Range: 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-#canvas:focus {
-	outline: none;
-}
+								<div class="character-card" data-character="mage">
+									<div class="character-image">
+											<img src="assets/img/mage_256.png" alt="Mage">
+											<div class="character-overlay">
+													<h3>Mage</h3>
+													<p>Manipulator of arcane forces, destroyer of enemies</p>
+													<div class="character-stats">
+															<span>⚔️ Attack: 2</span>
+															<span>🛡️ Defense: 0</span>
+															<span>👟 Movement: 1</span>
+															<span>🎯 Range: 2</span>
+													</div>
+											</div>
+									</div>
+							</div>
+            </div>
+        </div>
+    </section>
 
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
+    <!-- Instructions Section -->
+    <section id="instructions" class="instructions">
+        <div class="container">
+            <h2 class="section-title">How to Play</h2>
+            <p class="section-subtitle">Learn the basic rules in minutes, master the strategy for hours</p>
+            
+            <div class="instructions-grid">
+                <div class="instruction-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Hero</h3>
+                        <div class="step-image">
+                            <img src="assets/img/warrior_256.png" alt="Choose hero">
+                        </div>
+                        <p>Select one of the four unique heroes. Each one has special abilities and different playstyles.</p>
+                    </div>
+                </div>
 
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
+                <div class="instruction-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Explore the Dungeon</h3>
+                        <div class="step-image">
+                            <img src="assets/img/dark_column_256.png" alt="Explore dungeon">
+                        </div>
+                        <p>Navigate through mysterious rooms, each with unique challenges, hidden treasures and dangerous enemies.</p>
+                    </div>
+                </div>
 
-#status {
-	background-color: #242424;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	visibility: hidden;
-}
+                <div class="instruction-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Strategic Combat</h3>
+                        <div class="step-image">
+                            <img src="assets/img/demon_256.png" alt="Combat">
+                        </div>
+                        <p>Roll the dice and make tactical decisions. Every turn counts and strategy is key to victory.</p>
+                    </div>
+                </div>
 
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
+                <div class="instruction-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Collect Treasures</h3>
+                        <div class="step-image">
+                            <img src="assets/img/potion_200.png" alt="Treasures">
+                        </div>
+                        <p>Find potions, magical weapons and artifacts that will improve your hero's abilities.</p>
+                    </div>
+                </div>
+            </div>
 
-#status-splash.show-image--false {
-	display: none;
-}
+            <div class="game-rules">
+                <h3>Game Rules</h3>
+                <div class="rules-grid">
+                    <div class="rule-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Dice Phase</h3>
+                            <div class="step-image">
+                                <span class="rule-emoji">🎲</span>
+                            </div>
+                            <p>Roll the dice and assign them as you want to your Attack, Defense, and Movement stats for this turn.</p>
+                        </div>
+                    </div>
 
-#status-splash.fullsize--true {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
+                    <div class="rule-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Movement System</h3>
+                            <div class="movement-visual">
+                                <div class="grid-example movement-grid">
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell center">👟</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                </div>
+                                <div class="movement-legend">
+                                    <span>Orthogonal: 2 points per step</span>
+                                    <span>Diagonal: 3 points per step</span>
+                                </div>
+                            </div>
+                            <p>Move around the board using your Movement points. Each step costs different amounts.</p>
+                        </div>
+                    </div>
 
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
+                    <div class="rule-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Attack System</h3>
+                            <div class="range-visual">
+                                <div class="grid-example">
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell center">👟</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                    <div class="grid-cell orthogonal">2</div>
+                                    <div class="grid-cell diagonal">3</div>
+                                </div>
+                                <div class="range-legend">
+                                    <span>Orthogonal: 2 points per tile</span>
+                                    <span>Diagonal: 3 points per tile</span>
+                                </div>
+                            </div>
+                            <p>Attack enemies within your Range. If Attack ≥ Enemy Defense: Deal 1 damage and spend Attack points equal to enemy's Defense.</p>
+                        </div>
+                    </div>
 
-#status-progress, #status-notice {
-	display: none;
-}
+                    <div class="rule-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Enemy Turn</h3>
+                            <div class="step-image">
+                                <span class="rule-emoji">👹</span>
+                            </div>
+                            <div class="damage-example">
+                                <span class="formula">Total Enemy Attack ÷ Your Defense = Damage (rounded down)</span>
+                                <span class="example">Example: 8 Attack ÷ 3 Defense = 2 damage</span>
+                            </div>
+                            <p>Enemies move and attack based on their stats using the same movement and range rules.</p>
+                        </div>
+                    </div>
 
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
+                    <div class="rule-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Line of Sight</h3>
+                            <div class="step-image">
+                                <span class="rule-emoji">👁️</span>
+                            </div>
+                            <p>You cannot attack or be attacked without a direct line of sight. Obstacles and enemies block vision.</p>
+                        </div>
+                    </div>
 
-#status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
-}
-		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png" />
-<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png"/>
+                    <div class="rule-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>Treasure Chests</h3>
+                            <div class="step-image">
+                                <img src="assets/img/treasure_64.png" alt="Treasure Chest">
+                            </div>
+                            <p>Each level has a relic chest. Get in range and use Attack points to open it. Gain +1 to any stat for that level!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	</head>
-	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Epic Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/img/dark_column_256.png" alt="Dungeons">
+                    </div>
+                    <h3>Replayable Adventures</h3>
+                    <p>Every playthrough offers new tactical challenges and strategic decisions with high replay value</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/img/demon_256.png" alt="Enemies">
+                    </div>
+                    <h3>Varied Enemies</h3>
+                    <p>Face a wide variety of creatures, each with unique attack patterns</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/img/potion_200.png" alt="Magic">
+                    </div>
+                    <h3>Upgrade System</h3>
+                    <p>Find and combine magical items to create powerful strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<noscript>
-			Your browser does not support JavaScript.
-		</noscript>
+    <!-- Enemies Showcase -->
+    <section class="enemies">
+        <div class="container">
+            <h2 class="section-title">Face the Dark Forces</h2>
+            <div class="enemies-showcase">
+                <div class="enemy-item">
+                    <img src="assets/img/skeleton_256.png" alt="Skeleton" class="enemy-image">
+                    <h4>Skeleton</h4>
+                </div>
+                <div class="enemy-item">
+                    <img src="assets/img/orc_256.png" alt="Orc" class="enemy-image">
+                    <h4>Orc</h4>
+                </div>
+                <div class="enemy-item">
+                    <img src="assets/img/spider_256.png" alt="Spider" class="enemy-image">
+                    <h4>Spider</h4>
+                </div>
+                <div class="enemy-item">
+                    <img src="assets/img/demon_256.png" alt="Demon" class="enemy-image">
+                    <h4>Demon</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
+    <!-- Call to Action -->
+    <section id="play" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready for Adventure?</h2>
+                <p>Your destiny awaits in The Burden's Cast. Join thousands of adventurers and forge your legend.</p>
+                <a href="app/index.html" class="btn btn-primary btn-mega btn-cta">
+									<span class="btn-icon">⚔️</span>
+									<span class="btn-text">PLAY NOW!</span>
+									<div class="btn-glow"></div>
+									<div class="btn-pulse"></div>
+                </a>
+                <p class="cta-note">🎯 Free • 🚀 No downloads • ⚡ Play instantly</p>
+            </div>
+        </div>
+        <div class="cta-decoration">
+            <img src="assets/img/light_column_256.png" alt="Light Column" class="decoration-left">
+            <img src="assets/img/tree_256.png" alt="Tree" class="decoration-right">
+        </div>
+    </section>
 
-		<script src="burdens_cast.js"></script>
-		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"burdens_cast","experimentalVK":false,"fileSizes":{"burdens_cast.pck":10372784,"burdens_cast.wasm":52126319},"focusCanvas":true,"gdextensionLibs":[]};
-const GODOT_THREADS_ENABLED = false;
-const engine = new Engine(GODOT_CONFIG);
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/img/candle_64.png" alt="Candle" class="footer-icon">
+                    <span>The Burden's Cast</span>
+                </div>
+                <p>&copy; 2024 The Burden's Cast - Fan-made Digital Implementation. - Not affiliated with original creators</p>
+            </div>
+        </div>
+    </footer>
 
-(function () {
-	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
-	const statusNotice = document.getElementById('status-notice');
-
-	let initializing = true;
-	let statusMode = '';
-
-	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
-			return;
-		}
-		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
-			return;
-		}
-		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
-		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
-		statusMode = mode;
-	}
-
-	function setStatusNotice(text) {
-		while (statusNotice.lastChild) {
-			statusNotice.removeChild(statusNotice.lastChild);
-		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusNotice.appendChild(document.createTextNode(line));
-			statusNotice.appendChild(document.createElement('br'));
-		});
-	}
-
-	function displayFailureNotice(err) {
-		console.error(err);
-		if (err instanceof Error) {
-			setStatusNotice(err.message);
-		} else if (typeof err === 'string') {
-			setStatusNotice(err);
-		} else {
-			setStatusNotice('An unknown error occurred.');
-		}
-		setStatusMode('notice');
-		initializing = false;
-	}
-
-	const missing = Engine.getMissingFeatures({
-		threads: GODOT_THREADS_ENABLED,
-	});
-
-	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			let serviceWorkerRegistrationPromise;
-			try {
-				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
-			} catch (err) {
-				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
-			}
-			// There's a chance that installing the service worker would fix the issue
-			Promise.race([
-				serviceWorkerRegistrationPromise.then((registration) => {
-					if (registration != null) {
-						return Promise.reject(new Error('Service worker already exists.'));
-					}
-					return registration;
-				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
-				new Promise((resolve) => {
-					setTimeout(() => resolve(), 2000);
-				}),
-			]).then(() => {
-				// Reload if there was no error.
-				window.location.reload();
-			}).catch((err) => {
-				console.error('Error while registering service worker:', err);
-			});
-		} else {
-			// Display the message as usual
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
-		}
-	} else {
-		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
-				}
-			},
-		}).then(() => {
-			setStatusMode('hidden');
-		}, displayFailureNotice);
-	}
-}());
-		</script>
-	</body>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
-
