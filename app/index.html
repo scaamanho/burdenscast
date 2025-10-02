@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2VVL18BBR"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
@@ -10,7 +12,81 @@
 		</script>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>The Burden's Cast</title>
+		<title>Play The Burden's Cast - Epic Dungeon Adventure Game Online</title>
+		<meta name="description" content="Play The Burden's Cast now! Epic dungeon adventure game with tactical combat, dice rolling, and strategic gameplay. Choose your hero and start your adventure.">
+		<meta name="keywords" content="play game, dungeon crawler, tactical RPG, dice game, strategy game, browser game, online game">
+		<meta name="author" content="The Burden's Cast Team">
+		<meta name="robots" content="index, follow">
+		<link rel="canonical" href="https://scaamanho.github.io/burdenscast/app/">
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://scaamanho.github.io/burdenscast/app/">
+		<meta property="og:title" content="Play The Burden's Cast - Epic Dungeon Adventure Game">
+		<meta property="og:description" content="Play now! Epic dungeon adventure with tactical combat and strategic gameplay. Choose your hero and embark on your adventure.">
+		<meta property="og:image" content="https://scaamanho.github.io/burdenscast/assets/img/burdencast-initial.1.png">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:locale" content="en_US">
+		<meta property="og:site_name" content="The Burden's Cast">
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://scaamanho.github.io/burdenscast/app/">
+		<meta property="twitter:title" content="Play The Burden's Cast - Epic Dungeon Adventure Game">
+		<meta property="twitter:description" content="Play now! Epic dungeon adventure with tactical combat and strategic gameplay.">
+		<meta property="twitter:image" content="https://scaamanho.github.io/burdenscast/assets/img/burdencast-initial.1.png">
+		
+		<!-- Additional SEO meta tags -->
+		<meta name="theme-color" content="#1a1a1a">
+		<meta name="application-name" content="The Burden's Cast">
+		<meta name="apple-mobile-web-app-title" content="The Burden's Cast">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="alternate" hreflang="en" href="https://scaamanho.github.io/burdenscast/app/">
+		<link rel="alternate" hreflang="x-default" href="https://scaamanho.github.io/burdenscast/app/">
+		<link rel="manifest" href="../app.webmanifest">
+		
+		<!-- Structured Data JSON-LD for Game Page -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "The Burden's Cast - Game Player",
+			"description": "Play The Burden's Cast, an epic dungeon adventure game with tactical combat, dice rolling, and strategic gameplay. Browser-based RPG with no downloads required.",
+			"url": "https://scaamanho.github.io/burdenscast/app/",
+			"applicationCategory": "Game",
+			"operatingSystem": ["Windows", "macOS", "Linux", "iOS", "Android"],
+			"browserRequirements": "Requires JavaScript and WebGL support",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD",
+				"availability": "https://schema.org/InStock"
+			},
+			"author": {
+				"@type": "Organization",
+				"name": "The Burden's Cast Team"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "The Burden's Cast Team"
+			},
+			"inLanguage": "en",
+			"isAccessibleForFree": true,
+			"mainEntity": {
+				"@type": "VideoGame",
+				"name": "The Burden's Cast",
+				"genre": ["Role-playing game", "Strategy game", "Adventure game", "Tactical game"],
+				"gamePlatform": ["Web browser"],
+				"playMode": "SinglePlayer"
+			}
+		}
+		</script>
+		
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -97,24 +173,36 @@ body {
 	z-index: 1;
 }
 		</style>
+		<!-- Preload critical resources -->
+		<link rel="preload" href="burdens_cast.wasm" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.pck" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.js" as="script">
+		<link rel="preload" href="burdens_cast.png" as="image">
+		
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png" />
-<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png"/>
+		<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png"/>
 
 	</head>
 	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
+		<main role="main" aria-label="Game interface">
+			<canvas id="canvas" aria-label="The Burden's Cast game canvas">
+				Your browser does not support the canvas tag.
+			</canvas>
+		</main>
 
 		<noscript>
-			Your browser does not support JavaScript.
+			<div style="text-align: center; padding: 2rem; color: white; font-family: Arial, sans-serif;">
+				<h1>JavaScript Required</h1>
+				<p>This game requires JavaScript to run. Please enable JavaScript in your browser and refresh the page.</p>
+				<p><a href="https://scaamanho.github.io/burdenscast/" style="color: #4CAF50;">← Return to main page</a></p>
+			</div>
 		</noscript>
 
-		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
+		<output id="status" aria-live="polite">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png" alt="The Burden's Cast loading screen">
+			<progress id="status-progress" aria-label="Game loading progress"></progress>
+			<div id="status-notice" aria-live="assertive"></div>
+		</output>
 
 		<script src="burdens_cast.js"></script>
 		<script>
