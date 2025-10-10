@@ -173,14 +173,19 @@ body {
 	z-index: 1;
 }
 		</style>
-		<!-- Preload critical resources -->
-		<link rel="preload" href="burdens_cast.wasm" as="fetch" crossorigin="anonymous">
-		<link rel="preload" href="burdens_cast.pck" as="fetch" crossorigin="anonymous">
-		<link rel="preload" href="burdens_cast.js" as="script">
-		<link rel="preload" href="burdens_cast.png" as="image">
+		<!-- Cache control meta tags -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 		
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png" />
-		<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png"/>
+		<!-- Preload critical resources with cache busting -->
+		<link rel="preload" href="burdens_cast.wasm?v=20241220" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.pck?v=20241220" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.js?v=20241220" as="script">
+		<link rel="preload" href="burdens_cast.png?v=20241220" as="image">
+		
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png?v=20241220" />
+		<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png?v=20241220"/>
 
 	</head>
 	<body>
@@ -199,12 +204,12 @@ body {
 		</noscript>
 
 		<output id="status" aria-live="polite">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png" alt="The Burden's Cast loading screen">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png?v=20241220" alt="The Burden's Cast loading screen">
 			<progress id="status-progress" aria-label="Game loading progress"></progress>
 			<div id="status-notice" aria-live="assertive"></div>
 		</output>
 
-		<script src="burdens_cast.js"></script>
+		<script src="burdens_cast.js?v=20241220"></script>
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"burdens_cast","experimentalVK":false,"fileSizes":{"burdens_cast.pck":15530976,"burdens_cast.wasm":52126319},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
