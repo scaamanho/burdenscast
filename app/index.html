@@ -178,6 +178,32 @@ body {
 	text-align: center;
 	z-index: 1;
 }
+
+#fullscreen-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: rgba(42, 42, 42, 0.95);
+	border: 2px solid #4CAF50;
+	border-radius: 8px;
+	color: white;
+	padding: 12px 24px;
+	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	font-size: 16px;
+	cursor: pointer;
+	z-index: 1000;
+	transition: all 0.3s ease;
+	display: none;
+}
+
+#fullscreen-button:hover {
+	background-color: rgba(76, 175, 80, 0.95);
+	transform: scale(1.05);
+}
+
+#fullscreen-button.visible {
+	display: block;
+}
 		</style>
 		<!-- Cache control meta tags -->
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -214,6 +240,10 @@ body {
 			<progress id="status-progress" aria-label="Game loading progress"></progress>
 			<div id="status-notice" aria-live="assertive"></div>
 		</output>
+
+		<button id="fullscreen-button" aria-label="Enter fullscreen mode">
+			⛶ Fullscreen
+		</button>
 
 		<script src="burdens_cast.js?v=20251011"></script>
 		<script>
@@ -317,8 +347,8 @@ const engine = new Engine(GODOT_CONFIG);
 			},
 		}).then(() => {
 			setStatusMode('hidden');
-			// Request fullscreen mode for kiosk experience
-			requestFullscreen();
+			// Show fullscreen button after game loads
+			showFullscreenButton();
 		}, displayFailureNotice);
 	}
 
@@ -326,29 +356,59 @@ const engine = new Engine(GODOT_CONFIG);
 	function requestFullscreen() {
 		const elem = document.documentElement;
 		if (elem.requestFullscreen) {
-			elem.requestFullscreen().catch(err => {
+			return elem.requestFullscreen().catch(err => {
 				console.log('Fullscreen request failed:', err);
+				return Promise.reject(err);
 			});
 		} else if (elem.webkitRequestFullscreen) { /* Safari */
 			elem.webkitRequestFullscreen();
+			return Promise.resolve();
 		} else if (elem.msRequestFullscreen) { /* IE11 */
 			elem.msRequestFullscreen();
+			return Promise.resolve();
+		}
+		return Promise.reject(new Error('Fullscreen not supported'));
+	}
+
+	// Show/hide fullscreen button
+	function showFullscreenButton() {
+		const fullscreenBtn = document.getElementById('fullscreen-button');
+		if (!document.fullscreenElement) {
+			fullscreenBtn.classList.add('visible');
+		} else {
+			fullscreenBtn.classList.remove('visible');
 		}
 	}
 
-	// Add click listener to re-enter fullscreen if user exits
+	// Fullscreen button click handler
+	const fullscreenBtn = document.getElementById('fullscreen-button');
+	if (fullscreenBtn) {
+		fullscreenBtn.addEventListener('click', function(e) {
+			e.stopPropagation();
+			requestFullscreen().then(() => {
+				fullscreenBtn.classList.remove('visible');
+			}).catch(err => {
+				console.error('Failed to enter fullscreen:', err);
+			});
+		});
+	}
+
+	// Monitor fullscreen changes
 	document.addEventListener('fullscreenchange', function() {
-		if (!document.fullscreenElement) {
-			console.log('Exited fullscreen mode');
-		}
+		showFullscreenButton();
 	});
 
-	// Try to enter fullscreen on user interaction
-	document.addEventListener('click', function() {
-		if (!document.fullscreenElement) {
-			requestFullscreen();
-		}
-	}, { once: false });
+	document.addEventListener('webkitfullscreenchange', function() {
+		showFullscreenButton();
+	});
+
+	document.addEventListener('mozfullscreenchange', function() {
+		showFullscreenButton();
+	});
+
+	document.addEventListener('msfullscreenchange', function() {
+		showFullscreenButton();
+	});
 }());
 		</script>
 	</body>
