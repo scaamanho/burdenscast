@@ -46,12 +46,8 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-		<meta name="fullscreen" content="yes">
-		<meta name="browsermode" content="application">
 		<link rel="alternate" hreflang="en" href="https://scaamanho.github.io/burdenscast/app/">
 		<link rel="alternate" hreflang="x-default" href="https://scaamanho.github.io/burdenscast/app/">
-		<link rel="manifest" href="app.webmanifest">
 		
 		<!-- Structured Data JSON-LD for Game Page -->
 		<script type="application/ld+json">
@@ -102,9 +98,6 @@ body {
 	background-color: black;
 	overflow: hidden;
 	touch-action: none;
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
 }
 
 #canvas {
@@ -178,32 +171,6 @@ body {
 	text-align: center;
 	z-index: 1;
 }
-
-#fullscreen-button {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background-color: rgba(42, 42, 42, 0.95);
-	border: 2px solid #4CAF50;
-	border-radius: 8px;
-	color: white;
-	padding: 12px 24px;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	font-size: 16px;
-	cursor: pointer;
-	z-index: 1000;
-	transition: all 0.3s ease;
-	display: none;
-}
-
-#fullscreen-button:hover {
-	background-color: rgba(76, 175, 80, 0.95);
-	transform: scale(1.05);
-}
-
-#fullscreen-button.visible {
-	display: block;
-}
 		</style>
 		<!-- Cache control meta tags -->
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -240,10 +207,6 @@ body {
 			<progress id="status-progress" aria-label="Game loading progress"></progress>
 			<div id="status-notice" aria-live="assertive"></div>
 		</output>
-
-		<button id="fullscreen-button" aria-label="Enter fullscreen mode">
-			⛶ Fullscreen
-		</button>
 
 		<script src="burdens_cast.js?v=20251011"></script>
 		<script>
@@ -347,68 +310,8 @@ const engine = new Engine(GODOT_CONFIG);
 			},
 		}).then(() => {
 			setStatusMode('hidden');
-			// Show fullscreen button after game loads
-			showFullscreenButton();
 		}, displayFailureNotice);
 	}
-
-	// Function to request fullscreen
-	function requestFullscreen() {
-		const elem = document.documentElement;
-		if (elem.requestFullscreen) {
-			return elem.requestFullscreen().catch(err => {
-				console.log('Fullscreen request failed:', err);
-				return Promise.reject(err);
-			});
-		} else if (elem.webkitRequestFullscreen) { /* Safari */
-			elem.webkitRequestFullscreen();
-			return Promise.resolve();
-		} else if (elem.msRequestFullscreen) { /* IE11 */
-			elem.msRequestFullscreen();
-			return Promise.resolve();
-		}
-		return Promise.reject(new Error('Fullscreen not supported'));
-	}
-
-	// Show/hide fullscreen button
-	function showFullscreenButton() {
-		const fullscreenBtn = document.getElementById('fullscreen-button');
-		if (!document.fullscreenElement) {
-			fullscreenBtn.classList.add('visible');
-		} else {
-			fullscreenBtn.classList.remove('visible');
-		}
-	}
-
-	// Fullscreen button click handler
-	const fullscreenBtn = document.getElementById('fullscreen-button');
-	if (fullscreenBtn) {
-		fullscreenBtn.addEventListener('click', function(e) {
-			e.stopPropagation();
-			requestFullscreen().then(() => {
-				fullscreenBtn.classList.remove('visible');
-			}).catch(err => {
-				console.error('Failed to enter fullscreen:', err);
-			});
-		});
-	}
-
-	// Monitor fullscreen changes
-	document.addEventListener('fullscreenchange', function() {
-		showFullscreenButton();
-	});
-
-	document.addEventListener('webkitfullscreenchange', function() {
-		showFullscreenButton();
-	});
-
-	document.addEventListener('mozfullscreenchange', function() {
-		showFullscreenButton();
-	});
-
-	document.addEventListener('msfullscreenchange', function() {
-		showFullscreenButton();
-	});
 }());
 		</script>
 	</body>
