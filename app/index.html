@@ -46,9 +46,12 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<meta name="fullscreen" content="yes">
+		<meta name="browsermode" content="application">
 		<link rel="alternate" hreflang="en" href="https://scaamanho.github.io/burdenscast/app/">
 		<link rel="alternate" hreflang="x-default" href="https://scaamanho.github.io/burdenscast/app/">
-		<link rel="manifest" href="../app.webmanifest">
+		<link rel="manifest" href="app.webmanifest">
 		
 		<!-- Structured Data JSON-LD for Game Page -->
 		<script type="application/ld+json">
@@ -99,6 +102,9 @@ body {
 	background-color: black;
 	overflow: hidden;
 	touch-action: none;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
 }
 
 #canvas {
@@ -179,13 +185,13 @@ body {
 		<meta http-equiv="Expires" content="0">
 		
 		<!-- Preload critical resources with cache busting -->
-		<link rel="preload" href="burdens_cast.wasm?v=20241220" as="fetch" crossorigin="anonymous">
-		<link rel="preload" href="burdens_cast.pck?v=20241220" as="fetch" crossorigin="anonymous">
-		<link rel="preload" href="burdens_cast.js?v=20241220" as="script">
-		<link rel="preload" href="burdens_cast.png?v=20241220" as="image">
+		<link rel="preload" href="burdens_cast.wasm?v=20251011" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.pck?v=20251011" as="fetch" crossorigin="anonymous">
+		<link rel="preload" href="burdens_cast.js?v=20251011" as="script">
+		<link rel="preload" href="burdens_cast.png?v=20251011" as="image">
 		
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png?v=20241220" />
-		<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png?v=20241220"/>
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="burdens_cast.icon.png?v=20251011" />
+		<link rel="apple-touch-icon" href="burdens_cast.apple-touch-icon.png?v=20251011"/>
 
 	</head>
 	<body>
@@ -204,12 +210,12 @@ body {
 		</noscript>
 
 		<output id="status" aria-live="polite">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png?v=20241220" alt="The Burden's Cast loading screen">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="burdens_cast.png?v=20251011" alt="The Burden's Cast loading screen">
 			<progress id="status-progress" aria-label="Game loading progress"></progress>
 			<div id="status-notice" aria-live="assertive"></div>
 		</output>
 
-		<script src="burdens_cast.js?v=20241220"></script>
+		<script src="burdens_cast.js?v=20251011"></script>
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"burdens_cast","experimentalVK":false,"fileSizes":{"burdens_cast.pck":15530976,"burdens_cast.wasm":52126319},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
@@ -311,8 +317,38 @@ const engine = new Engine(GODOT_CONFIG);
 			},
 		}).then(() => {
 			setStatusMode('hidden');
+			// Request fullscreen mode for kiosk experience
+			requestFullscreen();
 		}, displayFailureNotice);
 	}
+
+	// Function to request fullscreen
+	function requestFullscreen() {
+		const elem = document.documentElement;
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen().catch(err => {
+				console.log('Fullscreen request failed:', err);
+			});
+		} else if (elem.webkitRequestFullscreen) { /* Safari */
+			elem.webkitRequestFullscreen();
+		} else if (elem.msRequestFullscreen) { /* IE11 */
+			elem.msRequestFullscreen();
+		}
+	}
+
+	// Add click listener to re-enter fullscreen if user exits
+	document.addEventListener('fullscreenchange', function() {
+		if (!document.fullscreenElement) {
+			console.log('Exited fullscreen mode');
+		}
+	});
+
+	// Try to enter fullscreen on user interaction
+	document.addEventListener('click', function() {
+		if (!document.fullscreenElement) {
+			requestFullscreen();
+		}
+	}, { once: false });
 }());
 		</script>
 	</body>
